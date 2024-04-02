@@ -14,7 +14,7 @@ def solution(n):
     while k <= n * n :
         for i in range(4) :
             
-            #while True :
+            while True :
                 nx = x + dx[i]
                 ny = y + dy[i]
 
@@ -31,6 +31,7 @@ def solution(n):
     
     answer = [[0] * n for _ in range(n)]
     
+    # 없으면 테스트 13 오류
     if n == 1 :
         return [[1]]
     
@@ -61,3 +62,4 @@ def solution(n):
                 dir = 'r'
                 
     return answer
+    

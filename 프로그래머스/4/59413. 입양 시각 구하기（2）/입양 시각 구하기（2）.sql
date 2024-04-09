@@ -1,0 +1,15 @@
+-- 코드를 입력하세요
+
+-- 가상 테이블 저장 + 재귀
+WITH RECURSIVE A AS (
+    SELECT 0 AS HOUR  -- 초기값 설정
+    UNION ALL  -- RECURSIVE 사용 시 필수
+    SELECT HOUR + 1 FROM A
+    WHERE HOUR < 23  -- RECURSIVE 사용 시 필수 / 반복문(재귀) 멈춤
+    )
+
+
+SELECT A.HOUR, COUNT(O.ANIMAL_ID) AS COUNT
+FROM A A LEFT JOIN ANIMAL_OUTS O ON A.HOUR = HOUR(O.DATETIME)
+GROUP BY 1
+ORDER BY 1 ;

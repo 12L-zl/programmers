@@ -1,13 +1,14 @@
 def solution(n, lost, reserve):
-    s = set(lost) & set(reserve)
-    l = set(lost) - s 
-    r = set(reserve) - s
+    # reserve 중에서도 잃어버릴 수 있음
+    # list 끼리 뺄 수 없으므로 set
+    nlost = set(lost) - set(reserve)
+    nreserve = set(reserve) - set(lost)
     
             
-    for i in r :
-        if i - 1 in l :
-            l.remove(i-1)
-        elif i + 1 in l :
-            l.remove(i+1)
+    for i in nreserve :
+        if i - 1 in nlost :
+            nlost.remove(i-1)
+        elif i + 1 in nlost :
+            nlost.remove(i+1)
             
-    return n - len(l)
+    return n - len(nlost)

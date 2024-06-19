@@ -7,14 +7,14 @@ def solution(jobs):
     
     while i < len(jobs) :
         for job in jobs :
-            if start < job[0] <= now :
-                heapq.heappush(heap, [job[1], job[0]])
+            if start < job[0] <= now :  
+                heapq.heappush(heap, [job[1], job[0]])  # 작업시간 작은 것부터 나열 [3,0], [6,2], [9,1]
         
         if heap :
-            current = heapq.heappop(heap)
+            current = heapq.heappop(heap) 
             start = now
-            now += current[0]
-            answer += (now - current[1])
+            now += current[0] 
+            answer += (now - current[1]) 
             i += 1
         else :
             now += 1
